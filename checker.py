@@ -43,7 +43,7 @@ class Checker:
         for x in range(start, end):
             phone = area_code + str(x)
             time.sleep(configs.timout_to_next) # time out
-            result = check_a_number(phone)
+            result = self.check_a_number(phone)
             if result['error_on_get'] == "NULL": # there is no error
                 db.save(
                     result['phone'],
@@ -55,6 +55,9 @@ class Checker:
             else:
                 # guess telegram banned us
                 # so sleep for a while
+                print("Warning: it seems we are banned from telegram server!")
+                print("wait for a moments...")
                 time.sleep(configs.timeout_on_no_res)
+
 
         print("checking loop ended.")
