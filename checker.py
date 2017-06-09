@@ -20,7 +20,7 @@ class Checker:
             'check_time' : "NULL",
             'error_on_get' : "NULL"}
         try:
-            res = self.sender.contact_add(phone, "check", "contact")
+            res = self.sender.contact_add(phonenumber, "check", "contact")
             result['check_time'] = time.ctime() # save the time that number checked
             if res == []: # not registered
                 result['registered'] =  "False"
