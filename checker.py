@@ -47,9 +47,9 @@ class Checker:
             if result['error_on_get'] == "NULL": # there is no error
                 db.save(
                     result['phone'],
-                    result['registered']
-                    result['chat_id']
-                    result['username']
+                    result['registered'],
+                    result['chat_id'],
+                    result['username'],
                     result['check_time']
                 )
             else
