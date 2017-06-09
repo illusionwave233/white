@@ -12,14 +12,13 @@ class Checker:
          sender = Sender("127.0.0.1", 4458)
 
      def check_a_number(self, phonenumber):
-         result = {
+        result = {
             'phone' : phonenumber,
             'registered' : "NULL",
             'chat_id' : "NULL",
             'username' : "NULL",
             'check_time' : "NULL",
-            'error_on_get' : "NULL"
-         }
+            'error_on_get' : "NULL"}
         try:
             res = sender.contact_add(phone, "check", "contact")
             result['check_time'] = time.ctime() # save the time that number checked
