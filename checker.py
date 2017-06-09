@@ -1,0 +1,62 @@
+from pytg.sender import Sender
+from pytg.exceptions import NoResponse
+from database import database
+
+import configs
+import time
+
+db = database()
+
+class Checker:
+     def __init__(self):
+         sender = Sender("127.0.0.1", 4458)
+
+     def check_a_number(self, phonenumber):
+         result = {
+            'phone' : phonenumber,
+            'registered' : "NULL",
+            'chat_id' : "NULL",
+            'username' : "NULL",
+            'check_time' : "NULL",
+            'error_on_get' : "NULL"
+         }
+        try:
+            res = sender.contact_add(phone, "check", "contact")
+            result['check_time'] = time.ctime() # save the time that number checked
+            if res == []: # not registered
+                result['registered'] =  "False"
+
+            elif len(res)>= 1: # user registered on telegram
+                res = res[0]
+                result['registered'] = "True"
+                result['chat_id'] = res.peer_id
+                if hasattr(res, 'username'):
+                    result['username'] = res.username
+        except NoResponse:
+            print("CLI did not responded in time")
+            result['error_on_get'] = "No respond error"
+
+        return result
+
+    def check_range(self, area_code, start_range, end_range):
+        start = start_range
+        end   = end_range + 1
+
+        for x in range(start, end):
+            phone = area_code + str(x)
+            time.sleep(configs.timout_to_next) # time out
+            result = check_a_number(phone)
+            if result['error_on_get'] == "NULL" # there is no error
+                db.save(
+                    result['phone'],
+                    result['registered']
+                    result['chat_id']
+                    result['username']
+                    result['check_time']
+                )
+            else
+                # guess telegram banned us
+                # so sleep for a while
+                time.sleep(configs.timeout_on_no_res)
+
+        print("checking loop ended.")
