@@ -52,7 +52,7 @@ class Checker:
                     result['username'],
                     result['check_time']
                 )
-            else
+            else:
                 # guess telegram banned us
                 # so sleep for a while
                 time.sleep(configs.timeout_on_no_res)
