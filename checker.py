@@ -9,7 +9,7 @@ db = database()
 
 class Checker:
      def __init__(self):
-         sender = Sender("127.0.0.1", 4458)
+         self.sender = Sender("127.0.0.1", 4458)
 
      def check_a_number(self, phonenumber):
         result = {
@@ -20,7 +20,7 @@ class Checker:
             'check_time' : "NULL",
             'error_on_get' : "NULL"}
         try:
-            res = sender.contact_add(phone, "check", "contact")
+            res = self.sender.contact_add(phone, "check", "contact")
             result['check_time'] = time.ctime() # save the time that number checked
             if res == []: # not registered
                 result['registered'] =  "False"
