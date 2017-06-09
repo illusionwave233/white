@@ -16,6 +16,6 @@ db = pymysql.connect(host=configs.host,    # your host, usually localhost
 cursor = db.cursor()
 class database:
     def save(self, phonenumber, isRegistered, chat_id, username, check_time):
-        sql = """INSERT INTO `%s`.`%s` (`phonenumber`, `registered`, `chat_id`, `username`, `time`) VALUES( %s, %s, %s, %s, %s);"""
-        cursor.execute(sql, (configs.db_name, configs.table_name, phonenumber, isRegistered, chat_id, username, check_time))
+        sql = "INSERT INTO " + configs.db_name + "." + configs.table_name + " (`phonenumber`, `registered`, `chat_id`, `username`, `time`) VALUES( %s, %s, %s, %s, %s);"
+        cursor.execute(sql, (phonenumber, isRegistered, chat_id, username, check_time))
         db.commit()
