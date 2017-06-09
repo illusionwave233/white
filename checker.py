@@ -36,8 +36,7 @@ class Checker:
             result['error_on_get'] = "No respond error"
 
         return result
-
-    def check_range(self, area_code, start_range, end_range):
+     def check_range(self, area_code, start_range, end_range):
         start = start_range
         end   = end_range + 1
 
