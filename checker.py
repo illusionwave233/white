@@ -52,6 +52,7 @@ class Checker:
                     result['username'],
                     result['check_time']
                 )
+                print("the " + result['phone'] + " checked and saved to database");
             else:
                 # guess telegram banned us
                 # so sleep for a while
