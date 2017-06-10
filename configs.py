@@ -6,8 +6,8 @@
 ### data for the checking on loop ###
 #####################################
 area_code = "+98917"
-start_range = 1111111
-end_range = 1111199
+start_range = 7151111
+end_range = 7151199
 
 ##################################################
 ### timeouts for prevent telegram error or ban ###
