@@ -12,8 +12,8 @@ end_range = 1111199
 ##################################################
 ### timeouts for prevent telegram error or ban ###
 ##################################################
-timout_to_next = 5 # seconds
-timeout_on_no_res = 3000 #seconds
+timout_to_next = 0.01 # seconds
+timeout_on_no_res = 100 #seconds
 
 ########################
 ### database configs ###
