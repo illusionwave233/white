@@ -26,7 +26,7 @@ class Checker:
                 result['registered'] =  "False"
 
             elif len(res)>= 1: # user registered on telegram
-                print(res)
+                print(len(res))
                 r = res[0]
                 result['registered'] = "True"
                 result['chat_id'] = r.peer_id
