@@ -22,11 +22,11 @@ class Checker:
         try:
             res = self.sender.contact_add(phonenumber, "check", "contact")
             result['check_time'] = time.ctime() # save the time that number checked
-            if res == []: # not registered
+            if res == [] or False : # not registered
                 result['registered'] =  "False"
 
             elif len(res)>= 1: # user registered on telegram
-                print(len(res))
+                print((res))
                 r = res[0]
                 result['registered'] = "True"
                 result['chat_id'] = r.peer_id
