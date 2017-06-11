@@ -37,12 +37,10 @@ class Checker:
 
         return result
      def check_range(self, area_code, start_range, end_range):
-
-        start = str(start_range)[1:7]
-        end   = str(end_range + 1)[1:7]
-
+        start = start_range
+        end   = end_range + 1
         for x in range(start, end):
-            phone = area_code + str(x)
+            phone = area_code + str(x)[1:7]
             time.sleep(configs.timout_to_next) # time out
             result = self.check_a_number(phone)
             if result['error_on_get'] == "NULL": # there is no error
