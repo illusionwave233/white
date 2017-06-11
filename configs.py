@@ -1,4 +1,4 @@
-are_code = ""
+area_code = ""
 start_range = 10000000
 end_range = 10000000
 # don't change top
@@ -12,8 +12,8 @@ end_range = 10000000
 #####################################
 
 area_code += "+98917"
-start_range += 0000000
-end_range += 29999999
+start_range += 0000000 # seven number after area code
+end_range += 2999999 # seven number after area code
 
 ##################################################
 ### timeouts for prevent telegram error or ban ###
