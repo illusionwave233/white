@@ -5,15 +5,15 @@ from database import database
 import configs
 import time
 
-tg = Telegram(
-    telegram="./tg/bin/telegram-cli",
-    pubkey_file="./tg/tg-server.pub")
 
 db = database()
 
 class Checker:
      def __init__(self):
-         self.sender = Sender("127.0.0.1", 4458)
+         tg = Telegram(
+         telegram="./tg/bin/telegram-cli",
+         pubkey_file="./tg/tg-server.pub")
+         self.sender = tg.sender
 
      def check_a_number(self, phonenumber):
         result = {
