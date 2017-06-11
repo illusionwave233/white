@@ -1,19 +1,15 @@
-from pytg import Telegram
+from pytg.sender import Sender
 from pytg.exceptions import NoResponse
 from database import database
 
 import configs
 import time
 
-
 db = database()
 
 class Checker:
      def __init__(self):
-         tg = Telegram(
-         telegram="./tg/bin/telegram-cli",
-         pubkey_file="./tg/tg-server.pub")
-         self.sender = tg.sender
+         self.sender = Sender("127.0.0.1", 4458)
 
      def check_a_number(self, phonenumber):
         result = {
@@ -26,7 +22,7 @@ class Checker:
         try:
             res = self.sender.contact_add(phonenumber, "check", "contact")
             result['check_time'] = time.ctime() # save the time that number checked
-            if res == []: # not registered
+            if res == [] : # not registered
                 result['registered'] =  "False"
 
             elif len(res)>= 1: # user registered on telegram
