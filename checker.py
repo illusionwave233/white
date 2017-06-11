@@ -26,19 +26,20 @@ class Checker:
                 result['registered'] =  "False"
 
             elif len(res)>= 1: # user registered on telegram
-                res = res[0]
+                r = res[0]
                 result['registered'] = "True"
-                result['chat_id'] = res.peer_id
-                if hasattr(res, 'username'):
-                    result['username'] = res.username
+                result['chat_id'] = r.peer_id
+                if hasattr(r, 'username'):
+                    result['username'] = r.username
         except NoResponse:
             print("CLI did not responded in time")
             result['error_on_get'] = "No respond error"
 
         return result
      def check_range(self, area_code, start_range, end_range):
-        start = start_range
-        end   = end_range + 1
+
+        start = str(start_range)[1:7]
+        end   = str(end_range + 1)[1:7]
 
         for x in range(start, end):
             phone = area_code + str(x)
